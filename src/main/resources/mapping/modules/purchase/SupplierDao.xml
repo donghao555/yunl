@@ -9,5 +9,8 @@
         FROM yunl_buyer_supplier WHERE 1=1
 	</select>
 
+    <delete id="delete">
+	       DELETE FROM yunl_buyer_supplier WHERE SUPPLIER_ID
+    </delete>
 
 </mapper>
