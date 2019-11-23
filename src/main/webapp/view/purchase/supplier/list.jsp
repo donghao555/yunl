@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>数据字典展示列表页面</title>
+		<title>供应商管理页面</title>
 		<%@ include file="../../../common/jsp/header.jsp"%>
 	</head>
 	<body>
@@ -11,11 +11,11 @@
 				<form id="searchForm" action="">
 				<div class="col-sm-12">
 					<!-- ------------按钮组 start------------ -->
-	                <div class="alert alert-success" role="alert">数据字典详细信息</div>
+	                <div class="alert alert-success" role="alert">供应商管理</div>
 	                <div class="col-sm-10">
 	                </div>
 						<div class="btn-group hidden-xs" role="group">
-							<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="dictionary/create.jsp">
+							<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="purchase/supplier/create.jsp">
 								<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>添加
 							</button>
 						</div>
@@ -46,7 +46,11 @@
 						                <td>${e.supplierAddress }</td>
 						                <td>${e.supplierLinkman1 }</td>
 						                <td>${e.supplierTel1 }</td>
-
+										<td><button type="button" class="btn btn-success" data-toggle="modal" id="update" name="supplier/view.do">
+											<i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>编辑
+										</button><button type="button" class="btn btn-success" data-toggle="modal" id="detil" name="supplier/detils.do">
+											<i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>详情
+										</button></td>
 						            </tr>
 					            </c:forEach>
 					        </tbody>
