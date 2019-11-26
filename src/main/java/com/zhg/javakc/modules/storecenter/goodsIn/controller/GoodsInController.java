@@ -17,7 +17,7 @@ public class GoodsInController{
     @Autowired
     GoodsInService goodsInService;
 
-    @RequestMapping("queryGoods")
+    @RequestMapping("queryGoodsIn")
     public ModelAndView queryGoods(GoodsInEntity goodsInEntity, HttpServletRequest request, HttpServletResponse response){
         ModelAndView modelAndView=new ModelAndView("goods/list");
         Page<GoodsInEntity> page=goodsInService.queryGoodds(goodsInEntity,new Page<GoodsInEntity>(request,response));
