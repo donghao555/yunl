@@ -15,15 +15,6 @@ public class WaresEntity extends BaseEntity<WaresEntity> {
     private Integer waresPrice;
     private Integer waresDiscount;
     private Integer waresTotal;
-    private String supplierId;
-
-    public String getSupplierId() {
-        return supplierId;
-    }
-
-    public void setSupplierId(String supplierId) {
-        this.supplierId = supplierId;
-    }
 
     public String getWaresId() {
         return waresId;

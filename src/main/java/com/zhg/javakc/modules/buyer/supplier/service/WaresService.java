@@ -20,12 +20,15 @@ public class WaresService extends BaseService<WaresDao, WaresEntity> {
     @Autowired
     WaresDao waresDao;
 
-//    public List<WaresEntity> geta(String id,WaresEntity waresEntity){
-//        List<WaresEntity> waresList = waresDao.get(waresEntity);
-//
-//        return null;
-//    }
-
-
+    public Page<WaresEntity> queryWares(WaresEntity waresEntity, Page<WaresEntity> page){
+        // 设置分页参数，才会被Mybatis分页插件所识别
+        // 在其sql的前后加入分页sql语句
+        waresEntity.setPage(page);
+        //根据分页与查询条件进行测试数据的查询
+        List<WaresEntity> waresList = waresDao.findList(waresEntity);
+        //将查询数据设置到分页类的List集合中，一起返回
+        page.setList(waresList);
+        return page;
+    }
 
 }

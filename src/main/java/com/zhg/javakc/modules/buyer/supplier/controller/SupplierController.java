@@ -4,9 +4,7 @@ package com.zhg.javakc.modules.buyer.supplier.controller;
 import com.zhg.javakc.base.page.Page;
 import com.zhg.javakc.base.util.CommonUtil;
 import com.zhg.javakc.modules.buyer.supplier.entity.SupplierEntity;
-import com.zhg.javakc.modules.buyer.supplier.entity.WaresEntity;
 import com.zhg.javakc.modules.buyer.supplier.service.SupplierService;
-import com.zhg.javakc.modules.buyer.supplier.service.WaresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,8 +26,6 @@ public class SupplierController {
 
     @Autowired
     SupplierService supplierService;
-    @Autowired
-    WaresService waresService;
 
     @RequestMapping("querySupplier")
     public ModelAndView querySupplier (SupplierEntity supplierEntity, HttpServletRequest request, HttpServletResponse response){
@@ -42,11 +38,9 @@ public class SupplierController {
     }
 
     @RequestMapping("/detils/{id}")
-    public String detils(@PathVariable String id, ModelMap modelMap, WaresEntity waresEntity){
+    public String detils(@PathVariable String id, ModelMap modelMap){
         SupplierEntity supplierEntity = supplierService.get(id);
         modelMap.put("supplierEntity",supplierEntity);
-        WaresEntity waresEntity1 = waresService.get(id);
-        modelMap.put("waresEntity",waresEntity);
         return "buyer/supplier/detils";
     }
 

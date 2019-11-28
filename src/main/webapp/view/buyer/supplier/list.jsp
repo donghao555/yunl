@@ -85,8 +85,8 @@
 			function single_det(id) {
 				url = root + 'supplier/detils/'+id+'.do';
 				document.location.href = url;
-				// url1 = root + 'wares/queryWares.do';
-				// document.location.href = url1;
+				url1 = root + 'wares/queryWares.do'
+				document.location.href = url1;
             };
         </script>
     </body>
