@@ -8,6 +8,9 @@ function page(n,s,a){
 	return false;
 }
 
+
+
+//页面加载完成后执行
 $(function()
 {
 	//搜索完毕,回车触发事件
