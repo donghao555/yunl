@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.buyer.supplier.dao.WaresDao">
+
+
+<!--    <select id="findList" resultType="com.zhg.javakc.modules.buyer.supplier.entity.WaresEntity">-->
+<!--        SELECT WARES_ID AS waresId,GOODS_ID AS goodsId, GOODS_NAME AS goodsName, WARES_COUNT AS waresCount, WARES_PRICE AS waresPrice, WARES_DISCOUNT AS waresDiscount, WARES_TOTAL AS waresTotal-->
+<!--        FROM yunl_buyer_wares WHERE 1=1-->
+<!--	</select>-->
+
+    <select id="get" resultType="com.zhg.javakc.modules.buyer.supplier.entity.WaresEntity">
+         SELECT WARES_ID AS waresId, GOODS_ID AS goodsId, WARES_COUNT AS waresCount,
+WARES_PRICE AS waresPrice, WARES_DISCOUNT AS waresDiscount,WARES_TOTAL AS waresTotal,
+GOODS_NAME AS goodsName, SUPPLIER_ID AS supplierId
+        FROM yunl_buyer_wares where supplier_id=#{id}
+	</select>
+</mapper>

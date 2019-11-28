@@ -30,4 +30,6 @@ public class SupplierService extends BaseService<SupplierDao, SupplierEntity> {
         page.setList(supplierList);
         return page;
     }
+
+
 }

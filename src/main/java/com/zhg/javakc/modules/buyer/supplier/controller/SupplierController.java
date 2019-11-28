@@ -2,10 +2,15 @@ package com.zhg.javakc.modules.buyer.supplier.controller;
 
 
 import com.zhg.javakc.base.page.Page;
+import com.zhg.javakc.base.util.CommonUtil;
 import com.zhg.javakc.modules.buyer.supplier.entity.SupplierEntity;
+import com.zhg.javakc.modules.buyer.supplier.entity.WaresEntity;
 import com.zhg.javakc.modules.buyer.supplier.service.SupplierService;
+import com.zhg.javakc.modules.buyer.supplier.service.WaresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,10 +28,12 @@ public class SupplierController {
 
     @Autowired
     SupplierService supplierService;
+    @Autowired
+    WaresService waresService;
 
     @RequestMapping("querySupplier")
     public ModelAndView querySupplier (SupplierEntity supplierEntity, HttpServletRequest request, HttpServletResponse response){
-        ModelAndView modelAndView = new ModelAndView("purchase/supplier/list");
+        ModelAndView modelAndView = new ModelAndView("buyer/supplier/list");
 
         Page<SupplierEntity> page = supplierService.querySupplier(supplierEntity, new Page<SupplierEntity>(request, response));
         modelAndView.addObject("page",page);
@@ -34,5 +41,47 @@ public class SupplierController {
         return modelAndView;
     }
 
+    @RequestMapping("/detils/{id}")
+    public String detils(@PathVariable String id, ModelMap modelMap, WaresEntity waresEntity){
+        SupplierEntity supplierEntity = supplierService.get(id);
+        modelMap.put("supplierEntity",supplierEntity);
+        WaresEntity waresEntity1 = waresService.get(id);
+        modelMap.put("waresEntity",waresEntity);
+        return "buyer/supplier/detils";
+    }
 
+    @RequestMapping("/save")
+    public String save(SupplierEntity supplierEntity){
+        // ##设置ID
+        supplierEntity.setSupplierId(CommonUtil.uuid());
+        supplierService.save(supplierEntity);
+        return "redirect:querySupplier.do";
+    }
+
+    @RequestMapping("/view/{id}")
+    public String view(@PathVariable String id, ModelMap modelMap){
+        SupplierEntity supplierEntity = supplierService.get(id);
+        modelMap.put("supplierEntity",supplierEntity);
+        return "buyer/supplier/update";
+    }
+
+    @RequestMapping("/update")
+    public String update(SupplierEntity supplierEntity){
+        supplierService.update(supplierEntity);
+        return "redirect:/supplier/querySupplier.do";
+    }
+
+    @RequestMapping("/delete")
+    public String delete(String[] ids){
+        supplierService.delete(ids);
+        return "redirect:querySupplier.do";
+    }
+    @RequestMapping("/deleteA/{id}")
+    public String delete1A(@PathVariable String[] id){
+        supplierService.delete(id);
+        return "redirect:/supplier/querySupplier.do";
+    }
 }
+
+
+
