@@ -31,4 +31,16 @@ public class WaresService extends BaseService<WaresDao, WaresEntity> {
         return page;
     }
 
+
+    public Page<WaresEntity> queryDetils(WaresEntity waresEntity,Page<WaresEntity> page){
+
+        waresEntity.setPage(page);
+
+        List<WaresEntity> waresList = waresDao.queryDetils(waresEntity);
+
+        page.setList(waresList);
+
+        return page;
+    }
+
 }

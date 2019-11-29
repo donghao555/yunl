@@ -15,6 +15,7 @@ public class WaresEntity extends BaseEntity<WaresEntity> {
     private Integer waresPrice;
     private Integer waresDiscount;
     private Integer waresTotal;
+    private String supplierId;
 
     public String getWaresId() {
         return waresId;
@@ -70,5 +71,13 @@ public class WaresEntity extends BaseEntity<WaresEntity> {
 
     public void setWaresTotal(Integer waresTotal) {
         this.waresTotal = waresTotal;
+    }
+
+    public String getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(String supplierId) {
+        this.supplierId = supplierId;
     }
 }
