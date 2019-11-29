@@ -12,9 +12,9 @@
 				<div class="col-sm-12">
 					<!-- ------------按钮组 start------------ -->
 	                <div class="alert alert-success" role="alert">供应商管理</div>
-	                <div class="col-sm-10">
-	                </div>
-						<div class="btn-group hidden-xs" role="group">
+<%--	                <div class="col-sm-10">--%>
+<%--	                </div>--%>
+						<div class="btn-group hidden-xs col-md-6" role="group">
 							<button type="button" class="btn btn-primary" data-toggle="modal" id="create" name="buyer/supplier/create.jsp">
 								<i class="glyphicon glyphicon-plus" aria-hidden="true"></i>新增
 							</button>
@@ -22,6 +22,10 @@
 								<i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>批量删除
 							</button>
 						</div>
+					<div class="col-md-4">
+							<input class="form-control"  name="supplierName" id="search" value="${supplierEntity.supplierName}" type="text" placeholder="查询内容 回车搜索"/>
+					</div>
+
 	                 <!-- ------------按钮组 end------------ -->
 						<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 						<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>

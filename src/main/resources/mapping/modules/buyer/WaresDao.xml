@@ -14,7 +14,7 @@
 	</select>
 
     <select id="queryDetils" resultType="com.zhg.javakc.modules.buyer.supplier.entity.WaresEntity">
-        SELECT WARES_ID AS waresId,GOODS_ID AS goodsId, WARES_COUNT AS waresCount, WARES_PRICE AS waresPrice, WARES_DISCOUNT AS waresDiscount, WARES_TOTAL AS waresTotal,
+        SELECT WARES_ID AS waresId,GOODS_ID AS goodsId, GOODS_NAME AS goodsName, WARES_COUNT AS waresCount, WARES_PRICE AS waresPrice, WARES_DISCOUNT AS waresDiscount, WARES_TOTAL AS waresTotal,
         SUPPLIER_ID AS supplierId
         FROM yunl_buyer_wares WHERE SUPPLIER_ID=#{supplierId}
 	</select>

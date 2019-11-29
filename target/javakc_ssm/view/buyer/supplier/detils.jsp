@@ -84,9 +84,9 @@
 								<td>${e.goodsName }</td>
 								<td>${e.goodsId }</td>
 								<td>${e.waresCount }</td>
-								<td>${e.waresPrice }</td>
-								<td>${e.waresDiscount }</td>
-								<td>${e.waresTotal }</td>
+								<td>￥${e.waresPrice }</td>
+								<td>￥${e.waresDiscount }</td>
+								<td>${e.waresTotal == 0?"已上架":"已下架"} </td>
 							</tr>
 						</c:forEach>
 						</tbody>

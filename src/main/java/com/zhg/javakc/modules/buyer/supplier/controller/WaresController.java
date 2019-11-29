@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /**
  * @program: javakc_ssm
@@ -29,16 +30,15 @@ public class WaresController {
     WaresService waresService;
     @Autowired
     private SupplierService supplierService;
-
-    @RequestMapping("queryWares")
-    public ModelAndView queryWares (WaresEntity waresEntity, HttpServletRequest request, HttpServletResponse response){
-        ModelAndView modelAndView = new ModelAndView("buyer/supplier/detils");
-
-        Page<WaresEntity> page = waresService.queryWares(waresEntity, new Page<WaresEntity>(request, response));
-        modelAndView.addObject("page",page);
-
-        return modelAndView;
-    }
+//
+//    @RequestMapping("queryWares")
+//    public ModelAndView queryWares (WaresEntity waresEntity,  HttpServletRequest request, HttpServletResponse response){
+//        ModelAndView modelAndView = new ModelAndView("buyer/wares/detils");
+//        Page<WaresEntity> page = waresService.queryWares(waresEntity, new Page<WaresEntity>(request,response));
+//        modelAndView.addObject("page",page);
+//
+//        return modelAndView;
+//    }
 
     @RequestMapping("/detils/{id}")
     public String detils(@PathVariable String id, ModelMap modelMap,HttpServletRequest request, HttpServletResponse response){

@@ -2,7 +2,9 @@ package com.zhg.javakc.modules.buyer.supplier.controller;
 import com.zhg.javakc.base.page.Page;
 import com.zhg.javakc.base.util.CommonUtil;
 import com.zhg.javakc.modules.buyer.supplier.entity.SupplierEntity;
+import com.zhg.javakc.modules.buyer.supplier.entity.WaresEntity;
 import com.zhg.javakc.modules.buyer.supplier.service.SupplierService;
+import com.zhg.javakc.modules.buyer.supplier.service.WaresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,12 +36,15 @@ public class SupplierController {
         return modelAndView;
     }
 
-    @RequestMapping("/detils/{id}")
-    public String detils(@PathVariable String id, ModelMap modelMap){
-        SupplierEntity supplierEntity = supplierService.get(id);
-        modelMap.put("supplierEntity",supplierEntity);
-        return "buyer/supplier/detils";
-    }
+//    @RequestMapping("/detils/{id}")
+//    public String detils(@PathVariable String id, ModelMap modelMap, WaresEntity waresEntity,  HttpServletRequest request, HttpServletResponse response){
+//        SupplierEntity supplierEntity = supplierService.get(id);
+//        modelMap.put("supplierEntity",supplierEntity);
+//        ModelAndView modelAndView = new ModelAndView("buyer/wares/detils");
+//        Page<WaresEntity> page = waresService.queryWares(waresEntity, new Page<WaresEntity>(request,response));
+//        modelAndView.addObject("page",page);
+//        return "buyer/supplier/detils";
+//    }
 
     @RequestMapping("/save")
     public String save(SupplierEntity supplierEntity){

@@ -7,6 +7,9 @@
         SELECT SUPPLIER_ID AS supplierId,SUPPLIER_NAME AS supplierName, SUPPLIER_DESCRIBE AS supplierDescribe,SUPPLIER_ADDRESS AS supplierAddress, SUPPLIER_LINKMAN1 AS supplierLinkman1,SUPPLIER_LINKMAN2 AS supplierLinkman2,SUPPLIER_TEL1 AS supplierTel1,SUPPLIER_TEL2 AS supplierTel2,
         SUPPLIER_REMARK AS supplierRemark
         FROM yunl_buyer_supplier WHERE 1=1
+        <if test="supplierName!='' and supplierName!=null">
+            and SUPPLIER_NAME LIKE '%'||#{supplierName}||'%'
+        </if>
 	</select>
 
     <insert id="insert">
