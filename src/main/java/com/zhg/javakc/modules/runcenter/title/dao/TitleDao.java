@@ -1,4 +1,7 @@
 package com.zhg.javakc.modules.runcenter.title.dao;
 
-public interface TitleDao {
+import com.zhg.javakc.base.dao.BaseDao;
+import com.zhg.javakc.modules.runcenter.title.entity.TitleEntity;
+
+public interface TitleDao extends BaseDao<TitleEntity> {
 }

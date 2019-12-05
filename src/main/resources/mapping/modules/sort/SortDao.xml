@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.runcenter.titlesort.dao.SortDao">
+
+	
+	<select id="findList" resultType="com.zhg.javakc.modules.runcenter.titlesort.entity.SortEntity">
+        SELECT ARTGROUP_ID AS artgroupId,ARTICLE_PREVIEW AS articlePreview,ARTICLE_NAME AS articleName,
+        ARTICLE_REMARKE AS articleRemarke,ARTICLE_STATE AS articleState FROM YUNL_ARTICLE_GROUP WHERE 1=1
+	</select>
+	
+	<insert id="insert">
+        INSERT INTO YUNL_ARTICLE_GROUP (ARTGROUP_ID,ARTICLE_PREVIEW,ARTICLE_NAME,ARTICLE_REMARKE)
+        values (#{artgroupId},#{articlePreview},#{articleName},#{articleRemarke})
+	</insert>
+
+    <select id="get" resultType="com.zhg.javakc.modules.runcenter.titlesort.entity.SortEntity">
+		SELECT ARTGROUP_ID AS artgroupId, ARTICLE_PREVIEW AS articlePreview,ARTICLE_NAME AS articleName,
+        ARTICLE_REMARKE AS articleRemarke,ARTICLE_STATE AS articleState FROM YUNL_ARTICLE_GROUP WHERE ARTGROUP_ID = #{id}
+	</select>
+    <update id="update">
+		UPDATE YUNL_ARTICLE_GROUP SET ARTICLE_NAME = #{articleName},ARTICLE_STATE = #{articleState}, ARTICLE_PREVIEW = #{articlePreview},
+		ARTICLE_REMARKE = #{articleRemarke} WHERE ARTGROUP_ID = #{artgroupId}
+	</update>
+
+    <delete id="delete" parameterType="java.lang.String">
+	       DELETE FROM YUNL_ARTICLE_GROUP WHERE ARTGROUP_ID IN
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+	
+</mapper>

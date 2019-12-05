@@ -1,14 +1,12 @@
 package com.zhg.javakc.modules.buyer.supplier.entity;
 
 import com.zhg.javakc.base.entity.BaseEntity;
-import lombok.ToString;
 
 /**
  * @program: javakc_ssm
  * @author: DH
  * @create: 2019-11-23 09:04
  **/
-@ToString
 public class SupplierEntity extends BaseEntity<SupplierEntity> {
 
     private String supplierId;
@@ -20,8 +18,6 @@ public class SupplierEntity extends BaseEntity<SupplierEntity> {
     private String supplierTel1;
     private String supplierTel2;
     private String supplierRemark;
-
-
 
     public String getSupplierId() {
         return supplierId;
@@ -94,5 +90,4 @@ public class SupplierEntity extends BaseEntity<SupplierEntity> {
     public void setSupplierRemark(String supplierRemark) {
         this.supplierRemark = supplierRemark;
     }
-
 }

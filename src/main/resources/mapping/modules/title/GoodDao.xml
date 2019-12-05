@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.runcenter.title.dao.GoodDao">
+
+
+    <sql id="allColumn">
+    	G.goods_id,G.classify_id,G.goods_name,G.goods_cost,G.goods_sell,G.goods_refer,G.goods_intro,G.goods_safe,
+    	G.goods_change,G.goods_keyword,G.goods_provider,G.goods_brand,G.goods_origin,G.goods_ford,G.goods_content,G.goods_expriation,
+    	G.goods_pack,G.goods_unit,G.goods_details,G.goods_state,G.goods_number
+    </sql>
+
+    <resultMap id="goods" type="com.zhg.javakc.modules.runcenter.title.entity.GoodEntity">
+        <id property="goodsId" column="goods_id" />
+        <result property="classifyId" column="classify_id" />
+        <result property="goodsName" column="goods_name" />
+        <result property="goodsCost" column="goods_cost" />
+        <result property="goodsSell" column="goods_sell" />
+        <result property="goodsRefer" column="goods_refer" />
+        <result property="goodsIntro" column="goods_intro" />
+        <result property="goodsSafe" column="goods_safe" />
+        <result property="goodsChange" column="goods_change" />
+        <result property="goodsKeyword" column="goods_keyword" />
+        <result property="goodsProvider" column="goods_provider" />
+        <result property="goodsBrand" column="goods_brand" />
+        <result property="goodsOrigin" column="goods_origin" />
+        <result property="goodsFord" column="goods_ford" />
+        <result property="goodsContent" column="goods_content" />
+        <result property="goodsCondition" column="goods_condition" />
+        <result property="goodsExpriation" column="goods_expriation" />
+        <result property="goodsPack" column="goods_pack" />
+        <result property="goodsUnit" column="goods_unit" />
+        <result property="goodsDetails" column="goods_details" />
+        <result property="goodsState" column="goods_state" />
+        <result property="goodsNumber" column="goods_number" />
+    </resultMap>
+
+    <select id="findList" resultMap="goods">
+        SELECT <include refid="allColumn"></include> FROM YUNL_GOODS G WHERE 1=1
+    </select>
+	
+<!--	<insert id="insert">-->
+<!--        INSERT INTO YUNL_RUN_ARTICLE (ARTICLE_ID,ARTICLE_TITLE,ARTICLE_TYPE,ARTICLE_STATE,-->
+<!--        ARTICLE_SYNOPSIS,ARTICLE_DETAILS) values (#{articleId},#{articleTitle},#{articleType},-->
+<!--        #{articleState},#{articleSynopsis},#{articleDetails})-->
+<!--	</insert>-->
+
+    <delete id="delete" parameterType="java.lang.String">
+	       DELETE FROM YUNL_GOODS WHERE GOODS_ID IN
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+	
+</mapper>

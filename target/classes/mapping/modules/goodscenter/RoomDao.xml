@@ -39,14 +39,10 @@
 	<select id="findList" resultMap="goods">
         SELECT <include refid="allColumn"></include> FROM YUNL_GOODS G WHERE 1=1
 	</select>
+	
+<!--	<insert id="insert">-->
 
-
-	<delete id="delete">
-      DELETE FROM YUNL_GOODS WHERE GOODS_ID IN
-        <foreach collection="array" item="id" open="(" separator="," close=")">
-            #{id}
-        </foreach>
-	</delete>
+<!--	</insert>-->
 	
 
 	

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhg.javakc.modules.runcenter.title.dao.TitleDao">
+
+	
+	<select id="findList" resultType="com.zhg.javakc.modules.runcenter.title.entity.TitleEntity">
+        SELECT ARTICLE_ID AS articleId,ARTGROUP_ID AS artgroupId,ARTICLE_TITLE AS articleTitle,ARTICLE_TYPE AS articleType,
+        ARTICLE_READING AS articleReading,ARTICLE_STATE AS articleState,ARTICLE_RECOMMEND AS articleRecommend,ARTICLE_PHOTO AS articlePhotot,
+        ARTICLE_SYNOPSIS AS articleSynopsis,ARTICLE_DETAILS AS articleDetails
+        FROM YUNL_RUN_ARTICLE WHERE 1=1
+	</select>
+	
+	<insert id="insert">
+        INSERT INTO YUNL_RUN_ARTICLE (ARTICLE_ID,ARTICLE_TITLE,ARTICLE_TYPE,ARTICLE_STATE,
+        ARTICLE_SYNOPSIS,ARTICLE_DETAILS) values (#{articleId},#{articleTitle},#{articleType},
+        #{articleState},#{articleSynopsis},#{articleDetails})
+	</insert>
+
+    <select id="get" resultType="com.zhg.javakc.modules.runcenter.title.entity.TitleEntity">
+		SELECT ARTICLE_ID AS articleId, ARTICLE_TITLE AS articleTitle,ARTICLE_TYPE AS articleType,
+        ARTICLE_READING AS articleReading,ARTICLE_STATE AS articleState,ARTICLE_RECOMMEND AS articleRecommend,ARTICLE_PHOTO AS articlePhoto,
+        ARTICLE_SYNOPSIS AS articleSynopsis,ARTICLE_DETAILS AS articleDetails FROM YUNL_RUN_ARTICLE WHERE ARTICLE_ID = #{id}
+	</select>
+
+    <update id="update">
+		UPDATE YUNL_RUN_ARTICLE SET ARTICLE_TITLE = #{articleTitle},ARTICLE_TYPE = #{articleType}, ARTICLE_PHOTO = #{articlePhoto}, ARTICLE_SYNOPSIS = #{articleSynopsis},
+			ARTICLE_DETAILS = #{articleDetails},ARTICLE_STATE=#{articleState} WHERE ARTICLE_ID = #{articleId}
+	</update>
+
+    <delete id="delete" parameterType="java.lang.String">
+	       DELETE FROM YUNL_RUN_ARTICLE WHERE ARTICLE_ID IN
+        <foreach collection="array" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+	
+</mapper>
